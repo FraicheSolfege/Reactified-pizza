@@ -1,31 +1,32 @@
+// import Pizza from  "../pizza/Pizza"
 
-
-// function Pizza(pizza){
-//     return (
-//         <li className="pizza" key={pizza.index} >
-//             <img src={`/public/pizzas/${pizza.photoName}`} alt={pizza.name} />
-//             <h3>{pizza.name}</h3>
-//             <p>{pizza.ingredients}</p>
-//             <p>{`$${pizza.price}`}</p>
-//             {pizza.soldOut && <p>Sold Out</p>}
-//         </li>
-//     )
+// function Pizza({pizzaData}){
+//     <main className = "menu">
+//         <ul className="pizzas">
+//             {pizzaData.map(pizza => <p>{pizza}</p>)}
+//         </ul>
+//     </main>
 // }
 
-function Pizza(pizza){
-    if (pizza.soldOut){
-        return (
-            <li className="pizza sold-out">
-                
-            </li>
-        )
-    }else{
-        return (
-            <li className="pizza">
-                
-            </li>
-        )
-    }
+
+function Pizza({pizzaInfo}){
+    const soldOut = pizzaInfo.soldOut;
+    return (
+        <li className={`pizza ${soldOut ? 'sold-out' : ''}`}>
+            <img src={pizzaInfo.photoName} alt=""></img>
+            <div>
+                <h3>{pizzaInfo.name}</h3>
+                <p>{pizzaInfo.ingredients}</p>
+                {/* <span>{Boolean(pizzaInfo.soldOut) ? 'SOLD OUT' : `$${pizzaInfo.price}.00`}</span> */}
+                <span>
+                    {pizzaInfo.soldOut ? (
+                        <p>Sold Out</p>
+                    ) : (
+                        <p>${pizzaInfo.price}</p>)}
+                </span>
+            </div>
+        </li>
+    )
 }
 
 export default Pizza
