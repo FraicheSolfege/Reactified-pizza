@@ -1,3 +1,5 @@
+// import Pizza from "../pizza/Pizza"
+
 
 const pizzaData = [
   {
@@ -43,3 +45,35 @@ const pizzaData = [
     soldOut: false,
   },
 ];
+
+function Menu(){
+  return(
+      <main className="menu">
+        <h2>Our Pizzas</h2>
+        <p>Authentic Italian cuisine. 6 creative dishes to choose from. All from our stone oven, all organic, all delish!</p>
+        <ul className="pizzas">
+          {pizzaData.map((pizza, index) => (
+            <li key={index} className="pizza">
+              <img src={`/pizzas/${pizza.photoName}`} alt="" />
+              <h3>{pizza.name}</h3>
+              <p>{pizza.ingredients}</p>
+              <p>{`$${pizza.price}`}</p>
+              {pizza.soldOut && <p>Sold Out</p>}
+            </li>
+          ))}
+      </ul>
+    </main>
+  )};
+
+
+// function Menu(){
+//   return (
+//     <main className="menu">
+//       <h2>Our Pizzas</h2>
+//       <p>Authentic Italian cuisine. 6 creative dishes to choose from. All from our stone oven, all organic, all delish!</p>
+//       <Pizza />
+//       </main>
+//       )};
+
+export default Menu
+export {pizzaData}
